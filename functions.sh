@@ -4,8 +4,10 @@ function extract {
 
   target_dir=$1
   ext=$2
-  dir=`basename ${target_dir}`
 
+  # TODO バリデーション
+
+  dir=`basename ${target_dir}`
   tmp_dir="./${dir}"
   tmp_dir_png="./${dir}/png"
   tmp_dir_png_extracted="./${dir}/png/extracted"
@@ -15,12 +17,12 @@ function extract {
     rm -rf ${tmp_dir}
   fi
   mkdir ${tmp_dir}
+  mkdir ${tmp_dir_png}
 
   # 動画をコピー
   cp "${target_dir}/*.${ext}" ${tmp_dir}/
 
   # 画像を抽出
-  mkdir ${tmp_dir_png}
   for f in "${tmp_dir}/*.${ext}"
   do
     ffmpeg -i $f -vf fps=5 "${tmp_dir_png}/$(basename $f ${ext})_%06d.png"
@@ -31,4 +33,10 @@ function extract {
 
   # 画像を圧縮
   zip -r ${dir}.zip ${tmp_dir_png_extracted}
+}
+
+function merge {
+  target_dir=$1
+  dir=`dirname ${target_dir}`
+  ffmpeg -i "${target_dir}_%06d.png" -c:v libx264 -vf "fps=25,format=yuv420p" "${dir}_swap.mp4"
 }
