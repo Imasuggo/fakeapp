@@ -42,3 +42,23 @@ function merge {
   target_dir=$1
   ffmpeg -i "${target_dir}_%06d.png" -c:v libx264 -vf "fps=25,format=yuv420p" "output_swap.mp4"
 }
+
+function train {
+
+  data_a=$2
+  data_b=$3
+  data_a_file=`basename $a`
+  data_b_file=`basename $b`
+  model=$4
+
+  if [ -e train ]; then
+    rm -rf train
+  fi
+  mkdir train
+
+  cp $data_a $data_b train/
+  unzip train/${data_a_file} -d train/data_a/
+  unzip train/${data_b_file} -d train/data_b/
+  
+}
+
