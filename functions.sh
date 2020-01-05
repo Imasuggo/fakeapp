@@ -7,7 +7,7 @@ function extract {
 
   # TODO バリデーション
 
-  dir=`basename ${target_dir}`
+  dir=`basename "${target_dir}"`
   tmp_dir="./${dir}"
   tmp_dir_png="./${dir}/png"
   tmp_dir_png_extracted="./${dir}/png/extracted"
