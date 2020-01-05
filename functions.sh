@@ -56,7 +56,8 @@ function train {
   fi
   mkdir train
 
-  cp $data_a $data_b train/
+  cp $data_a train/
+  cp $data_b train/
   unzip train/${data_a_file} -d train/data_a/
   unzip train/${data_b_file} -d train/data_b/
   
