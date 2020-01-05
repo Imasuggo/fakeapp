@@ -45,21 +45,21 @@ function merge {
 
 function train {
 
-  data_a=$2
-  data_b=$3
+  data_a=$1
+  data_b=$2
   data_a_file=`basename ${data_a}`
   data_b_file=`basename ${data_b}`
-  model=$4
+  model=$3
 
   if [ -e train ]; then
     rm -rf train
   fi
   mkdir train
 
-  cp $data_a train/
-  cp $data_b train/
-  unzip train/${data_a_file} -d train/data_a/
-  unzip train/${data_b_file} -d train/data_b/
+  cp ${data_a} train/
+  cp ${data_b} train/
+  unzip train/${data_a_file} -d train/data_a/ > /dev/null
+  unzip train/${data_b_file} -d train/data_b/ > /dev/null
   
+  python faceswap/faceswap.py train -A train/data_a/extracted -B train/data_b/extracted -m "${model}" -bs 16 -s 1000 -ag
 }
-
