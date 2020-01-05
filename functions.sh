@@ -47,8 +47,8 @@ function train {
 
   data_a=$2
   data_b=$3
-  data_a_file=`basename $a`
-  data_b_file=`basename $b`
+  data_a_file=`basename ${data_a}`
+  data_b_file=`basename ${data_b}`
   model=$4
 
   if [ -e train ]; then
