@@ -2,6 +2,8 @@
 
 function extract {
 
+  pwd
+
   target_dir=$1
   ext=$2
 
@@ -23,7 +25,7 @@ function extract {
   cp "${target_dir}/*.${ext}" ${tmp_dir}/
 
   # 画像を抽出
-  for f in "${tmp_dir}/*.${ext}"
+  for f in ${tmp_dir}/*.${ext}
   do
     ffmpeg -i $f -vf fps=5 "${tmp_dir_png}/$(basename $f ${ext})_%06d.png"
   done
