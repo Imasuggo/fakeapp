@@ -40,6 +40,5 @@ function extract {
 
 function merge {
   target_dir=$1
-  dir=`dirname ${target_dir}`
-  ffmpeg -i "${target_dir}_%06d.png" -c:v libx264 -vf "fps=25,format=yuv420p" "${dir}_swap.mp4"
+  ffmpeg -i "${target_dir}_%06d.png" -c:v libx264 -vf "fps=25,format=yuv420p" "output_swap.mp4"
 }
