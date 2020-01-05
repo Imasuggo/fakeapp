@@ -6,6 +6,7 @@ function extract {
 
   target_dir=$1
   ext=$2
+  fps=$3
 
   # TODO バリデーション
 
@@ -27,7 +28,7 @@ function extract {
   # 画像を抽出
   for f in ${tmp_dir}/*.${ext}
   do
-    ffmpeg -i $f -vf fps=5 "${tmp_dir_png}/$(basename $f ".${ext}")_%06d.png"
+    ffmpeg -i $f -vf fps=${fps} "${tmp_dir_png}/$(basename $f ".${ext}")_%06d.png"
   done
 
   # 顔画像を抽出
