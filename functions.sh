@@ -22,7 +22,7 @@ function extract {
   mkdir ${tmp_dir_png}
 
   # 動画をコピー
-  cp "${target_dir}/*.${ext}" ${tmp_dir}/
+  cp ${target_dir}/*.${ext} ${tmp_dir}/
 
   # 画像を抽出
   for f in ${tmp_dir}/*.${ext}
