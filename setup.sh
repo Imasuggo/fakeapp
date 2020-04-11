@@ -11,3 +11,5 @@ bash Anaconda3-2019.10-Linux-x86_64.sh -b -f -p /usr/local > /dev/null
 git clone https://github.com/deepfakes/faceswap.git > /dev/null
 conda install -y tk tensorflow-gpu=1.15 python=3.6 > /dev/null
 pip install -r faceswap/requirements.txt > /dev/null
+
+# update config

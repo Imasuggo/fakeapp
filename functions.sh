@@ -61,5 +61,5 @@ function train {
   unzip train/${data_a_file} -d train/data_a/ > /dev/null
   unzip train/${data_b_file} -d train/data_b/ > /dev/null
   
-  python faceswap/faceswap.py train -A train/data_a/extracted -B train/data_b/extracted -m "${model}" -bs 16 -s 1000 -ag
+  python faceswap/faceswap.py train -A train/data_a/extracted -B train/data_b/extracted -m "${model}" -bs 16 -s 1000 -t dfaker
 }
