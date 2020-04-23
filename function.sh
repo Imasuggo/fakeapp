@@ -13,18 +13,17 @@ function extract_images() {
     rm -rf "${TMP_DIR}"
   fi
   mkdir "${TMP_DIR}"
-  cd "${TMP_DIR}"
 
   # Copies videos to the tmp directory
-  cp "${target_dir}"/*."${EXT}" .
+  cp "${target_dir}"/*."${EXT}" "${TMP_DIR}"
 
   # Extracts images
-  for f in *."${EXT}"
+  for f in "${TMP_DIR}"/*."${EXT}"
   do
-    ffmpeg /
-      -i /
-      $f /
-      fps="${FPS}" /
+    ffmpeg \
+      -i \
+      $f \
+      -vf fps="${FPS}" \
       "${output_dir}/$(basename $f ".${EXT}")_%06d.png"
   done
 }
