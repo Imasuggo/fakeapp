@@ -2,7 +2,7 @@
 
 cd `dirname $0`
 
-apt-get install -y apt-get
+apt-get install -y vim
 
 wget -c https://repo.continuum.io/archive/Anaconda3-2019.10-Linux-x86_64.sh
 chmod +x Anaconda3-2019.10-Linux-x86_64.sh
