@@ -14,6 +14,11 @@ function extract_images() {
   fi
   mkdir "${TMP_DIR}"
 
+  if [ -e "${output_dir}" ]; then
+    rm -rf "${output_dir}"
+  fi
+  mkdir "${output_dir}"
+
   # Copies videos to the tmp directory
   cp "${target_dir}"/*."${EXT}" "${TMP_DIR}"
 
